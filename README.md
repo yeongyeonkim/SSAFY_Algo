@@ -1,1 +1,1 @@
-# SSAFY_Java
+# SSAFY_Algo
