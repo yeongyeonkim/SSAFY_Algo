@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 
-public class Solution_D4_1251_하나로_서울8반_김영연 {
+public class Solution_D4_1251_하나로_PrimPq_서울8반_김영연 {
 
 	static PriorityQueue<Node> q = new PriorityQueue<>();
 	static int[][] island;
@@ -29,7 +29,7 @@ public class Solution_D4_1251_하나로_서울8반_김영연 {
 
 	}
 
-	public static void BFS() {
+	public static void Prim() {
 		q.offer(new Node(0, 0));
 		
 		while (!q.isEmpty()) {
@@ -43,7 +43,7 @@ public class Solution_D4_1251_하나로_서울8반_김영연 {
 			
 			for (int i = 0; i < island.length; i++) {
 				if (visit[i] == false) {
-					q.offer(new Node(i, e * (Math.pow(island[i][0] - island[tmp.index][0], 2)
+					q.offer(new Node(i, (Math.pow(island[i][0] - island[tmp.index][0], 2)
 							+ Math.pow(island[i][1] - island[tmp.index][1], 2))));
 				}
 			}
@@ -68,8 +68,8 @@ public class Solution_D4_1251_하나로_서울8반_김영연 {
 		for (int i = 0; i < n; i++)
 			island[i][1] = Integer.parseInt(info[i]);
 		e = Double.parseDouble(br.readLine());
-		BFS();
-		System.out.println("#" + t + " " + Math.round(max));
+		Prim();
+		System.out.println("#" + t + " " + Math.round(e * max));
 		}
 	}
 }
