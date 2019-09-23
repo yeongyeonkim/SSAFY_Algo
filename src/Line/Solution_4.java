@@ -1,28 +1,43 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-//틀린코드입니다.
+//시험에서 낸 것의 반례를 발견하여, 정답이라고 생각하는 코드로 수정하였습니다.
 public class Solution_4 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int[] count = new int[n];
-		int cnt = 0; //갱신을 위함 false라면 자리에있었음.
-		int max = Integer.MIN_VALUE; // max값
-		for(int i=0; i<n; i++) {
+		int cnt = 0;
+		int index = 0;
+		int max = 0; // max값
+		while (index < count.length) { //처음 사람발견 or 범위를 벗어나는경우
 			int tmp = Integer.parseInt(st.nextToken());
-			if(tmp == 1) {//사람이있으면
-				count[i] = 0;
-				cnt = 0;
-			}
-			else { //사람이없으면
-				count[i] = ++cnt;
-				max = max < count[i] ? count[i] : max; //max값 갱신
+			if (tmp == 1) break;
+			else {
+				cnt++;
+				index++;
 			}
 		}
-		max = (max % 2 == 0) ? (max / 2) : (max / 2 + 1);
-		//짝수면 max / 2 홀수면 max/2  +1;
+		max = (max > cnt - 1) ? max : cnt - 1;
+		cnt = 0;
+		index++;
+		//벗어난 경우엔 while에 안들어 갈 것이고, 그렇지 않으면 사람을 발견하러 들어감
+		while (index < count.length) {
+			int tmp = Integer.parseInt(st.nextToken());
+			if (tmp == 1) {
+				// max값 갱신해주기.
+				int tmp_max = (cnt % 2 == 0) ? (cnt / 2) : (cnt / 2 + 1);
+				if (max < tmp_max) max = tmp_max;
+				cnt = 0;
+				index++;
+			} else {
+				cnt++; 
+				index++;
+			}
+		}
+		//벗어났을때의 cnt도 고려
+		max = (max > cnt - 1) ? max : cnt - 1;
 		System.out.println(max);
 	}
 }
