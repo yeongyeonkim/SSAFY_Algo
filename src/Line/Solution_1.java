@@ -1,3 +1,5 @@
+package Line;
+
 import java.util.Scanner;
 
 public class Solution_1 {

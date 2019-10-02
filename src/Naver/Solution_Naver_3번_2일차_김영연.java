@@ -1,3 +1,5 @@
+package Naver;
+
 public class Solution_Naver_3번_2일차_김영연 {
 
 	static int result, k, n;

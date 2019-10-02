@@ -1,4 +1,4 @@
-package a0930;
+package NHN;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

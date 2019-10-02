@@ -1,3 +1,5 @@
+package Naver;
+
 
 public class Solution_Naver_1번_1일차_김영연 {
 	public static void main(String[] emails) {
